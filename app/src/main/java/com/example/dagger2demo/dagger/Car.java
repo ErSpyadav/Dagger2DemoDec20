@@ -16,7 +16,6 @@ public class Car {
     public void drive(){
         Log.d(TAG, "drive: Driving");
         engine.engineName();
-        wheel.wheelName();
     }
 
 }
