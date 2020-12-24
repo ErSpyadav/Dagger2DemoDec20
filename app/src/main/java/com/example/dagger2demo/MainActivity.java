@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.example.dagger2demo.dagger.Car;
 import com.example.dagger2demo.dagger.CarComponent;
 import com.example.dagger2demo.dagger.DaggerCarComponent;
+import com.example.dagger2demo.dagger.Rim;
+import com.example.dagger2demo.dagger.Tires;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,6 +20,8 @@ import android.view.MenuItem;
 import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
     @Inject Car car;
+    @Inject Tires tires;
+    @Inject Rim rim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         CarComponent component = DaggerCarComponent.create();
         component.inject(MainActivity.this);
         car.drive();
+        tires.inflate();
+        rim.printRim();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
