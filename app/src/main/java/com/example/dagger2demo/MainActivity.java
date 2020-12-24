@@ -15,15 +15,15 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-
+import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
-    Car car;
+    @Inject Car car;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         CarComponent component = DaggerCarComponent.create();
-        car = component.getCar();
+        component.inject(MainActivity.this);
         car.drive();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
