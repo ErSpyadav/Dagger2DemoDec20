@@ -2,11 +2,12 @@ package com.example.dagger2demo;
 
 import android.os.Bundle;
 
-import com.example.dagger2demo.dagger.Car;
-import com.example.dagger2demo.dagger.CarComponent;
+import com.example.dagger2demo.dagger.cars.Car;
+import com.example.dagger2demo.dagger.cars.CarComponent;
 import com.example.dagger2demo.dagger.DaggerCarComponent;
-import com.example.dagger2demo.dagger.Rim;
-import com.example.dagger2demo.dagger.Tires;
+import com.example.dagger2demo.dagger.modules.DieselEngineModule;
+import com.example.dagger2demo.dagger.cars.Rim;
+import com.example.dagger2demo.dagger.cars.Tires;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -26,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CarComponent component = DaggerCarComponent.create();
+        CarComponent component = DaggerCarComponent.builder()
+                .dieselEngineModule(new DieselEngineModule(100))
+                .build();
         component.inject(MainActivity.this);
         car.drive();
         tires.inflate();

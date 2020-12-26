@@ -1,4 +1,8 @@
-package com.example.dagger2demo.dagger;
+package com.example.dagger2demo.dagger.modules;
+
+import com.example.dagger2demo.dagger.cars.Rim;
+import com.example.dagger2demo.dagger.cars.Tires;
+import com.example.dagger2demo.dagger.cars.Wheel;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +21,7 @@ public class WheelsModule {
     }
     /*Here Rim and Tire object will taken from above while injecting*/
     @Provides
-    Wheel provideWheel(Rim rim,Tires tires) {
+    Wheel provideWheel(Rim rim, Tires tires) {
         return new Wheel(rim, tires);
     }
 }
