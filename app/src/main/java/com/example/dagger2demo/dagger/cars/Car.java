@@ -1,4 +1,4 @@
-package com.example.dagger2demo.dagger;
+package com.example.dagger2demo.dagger.cars;
 
 import android.util.Log;
 
@@ -14,8 +14,8 @@ public class Car {
         this.wheel = wheel;
     }
     public void drive(){
+        engine.start();
         Log.d(TAG, "drive: Driving");
-        engine.engineName();
     }
 
 }

@@ -1,8 +1,4 @@
-package com.example.dagger2demo.dagger;
-
-import android.util.Log;
-
-import javax.inject.Inject;
+package com.example.dagger2demo.dagger.cars;
 
 public class Wheel {
     private static final String TAG = "Wheel";
