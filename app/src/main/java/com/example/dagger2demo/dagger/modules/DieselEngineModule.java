@@ -15,7 +15,12 @@ public  class DieselEngineModule {
     }
 
     @Provides
-    Engine provideEngine() {
-        return new DieselEngine(horsePower);
+    public int providehorsePower(){
+        return horsePower;
+    }
+
+    @Provides
+    Engine provideEngine(DieselEngine engine) {
+        return engine;
     }
 }
