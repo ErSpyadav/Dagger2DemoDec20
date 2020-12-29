@@ -6,10 +6,12 @@ import com.example.dagger2demo.dagger.modules.PetrolEngineModule;
 import com.example.dagger2demo.dagger.modules.WheelsModule;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
 
+@Singleton
 @Component(modules = {WheelsModule.class, PetrolEngineModule.class})
 public interface CarComponent {
     Car getCar();
