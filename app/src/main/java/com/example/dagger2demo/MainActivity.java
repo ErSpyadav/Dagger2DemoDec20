@@ -18,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
-    @Inject Car car;
+    @Inject Car car1,car2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
                 .engineCapacity(125)
                 .build();
         component.inject(MainActivity.this);
-        car.drive();
+        car1.drive();
+        car2.drive();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
