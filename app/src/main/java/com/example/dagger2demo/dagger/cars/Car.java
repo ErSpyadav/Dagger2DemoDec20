@@ -2,8 +2,16 @@ package com.example.dagger2demo.dagger.cars;
 
 import android.util.Log;
 
-import javax.inject.Inject;
+import com.example.dagger2demo.dagger.PerActivity;
 
+import javax.inject.Inject;
+/*
+* Car instance will alive as long as Activity alive
+*
+* */
+
+
+@PerActivity
 public class Car {
     private static final String TAG = "Car";
     private Driver driver;

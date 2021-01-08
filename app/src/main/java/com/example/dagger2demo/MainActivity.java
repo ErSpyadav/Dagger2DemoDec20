@@ -3,9 +3,9 @@ package com.example.dagger2demo;
 import android.os.Bundle;
 
 import com.example.dagger2demo.dagger.cars.Car;
-import com.example.dagger2demo.dagger.cars.CarComponent;
-import com.example.dagger2demo.dagger.cars.DaggerCarComponent;
-import com.example.dagger2demo.dagger.modules.DieselEngineModule;
+import com.example.dagger2demo.dagger.cars.ActivityComponent;
+import com.example.dagger2demo.dagger.cars.DaggerActivityComponent;
+import com.example.dagger2demo.dagger.cars.Driver;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -21,15 +21,23 @@ import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG ="MainActivity" ;
     @Inject Car car1,car2;
+    @Inject Driver driver1,driver2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CarComponent carComponent = ((ExampleApp)getApplication()).getCarComponent();
-        carComponent.inject(MainActivity.this);
+        ActivityComponent activityComponent = DaggerActivityComponent.builder()
+                .horsePower(125)
+                .engineCapacity(1200)
+                .appComponent(((ExampleApp)getApplication()).getActivityComponent())
+                .build();
+        activityComponent.inject(MainActivity.this);
        try {
            car1.drive();
            car2.drive();
+           System.out.println("Car1:"+car1);
+           System.out.println("Car2:"+car2);
+
        }
        catch (Exception e){
            Log.e(TAG, "onCreate: "+e.getLocalizedMessage());
