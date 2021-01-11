@@ -18,6 +18,13 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.Dagger2Demo.PopupOverlay" />
 
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="Title"
+            android:textSize="18sp"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
